@@ -1,0 +1,5 @@
+CAB-1234|Kamal Perera|0771234567|CAR|false
+WP-CAJ-5678|Nimal Silva|0719876543|CAR|false
+BIKE-9012|Sunil Fernando|0755551234|MOTORCYCLE|false
+VAN-3456|Ruwan Jayasuriya|0764449876|VAN|false
+ABC-4280|Naveesha|0728055266|CAR|false
