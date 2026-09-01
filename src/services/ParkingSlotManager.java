@@ -90,16 +90,20 @@ public class ParkingSlotManager {
     }
 
     /**
-     * Gets all available slots (FR-07).
+     * Gets all available parking slots.
+     * Demonstrates: Static Polymorphism (Method Overloading - Base version).
      */
     public List<ParkingSlot> getAvailableSlots() {
         return slotDataStore.getAvailableSlots();
     }
 
     /**
-     * Gets all available slots matching a specific vehicle type (FR-07, FR-08).
+     * Overloaded method: Gets all available slots filtered by a specific vehicle type.
+     * Demonstrates: Static Polymorphism (Method Overloading - Parameterized version).
+     * @param type The vehicle type to filter by.
+     * @return List of matching available slots.
      */
-    public List<ParkingSlot> getAvailableSlotsByType(VehicleType type) {
+    public List<ParkingSlot> getAvailableSlots(VehicleType type) {
         List<ParkingSlot> matching = new ArrayList<>();
         for (ParkingSlot s : slotDataStore.getAvailableSlots()) {
             if (s.getSlotType() == type) {
@@ -107,6 +111,13 @@ public class ParkingSlotManager {
             }
         }
         return matching;
+    }
+
+    /**
+     * Legacy alias for getAvailableSlots(VehicleType type).
+     */
+    public List<ParkingSlot> getAvailableSlotsByType(VehicleType type) {
+        return getAvailableSlots(type);
     }
 
     /**
@@ -144,6 +155,24 @@ public class ParkingSlotManager {
         }
         slot.releaseSlot();
         slotDataStore.update(slot);
+    }
+
+    /**
+     * Finds a slot by its unique ID.
+     * Demonstrates: Static Polymorphism (Method Overloading - Search by ID).
+     */
+    public ParkingSlot findSlot(String slotId) {
+        return findSlotById(slotId);
+    }
+
+    /**
+     * Finds a slot by slot number or custom search mode.
+     * Demonstrates: Static Polymorphism (Method Overloading - Search by Number with boolean flag).
+     * @param identifier The slot ID or slot number.
+     * @param byNumber   If true, searches by slot number (e.g. "A1"); if false, searches by slot ID.
+     */
+    public ParkingSlot findSlot(String identifier, boolean byNumber) {
+        return byNumber ? findSlotByNumber(identifier) : findSlotById(identifier);
     }
 
     /**

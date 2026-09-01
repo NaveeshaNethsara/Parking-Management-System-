@@ -13,24 +13,51 @@ import java.awt.*;
 public class DialogHelper {
 
     /**
-     * Shows an error message dialog.
+     * Shows an error message dialog with default title.
+     * Demonstrates: Static Polymorphism (Method Overloading).
      */
     public static void showError(Component parent, String message) {
-        JOptionPane.showMessageDialog(parent, message, "Error", JOptionPane.ERROR_MESSAGE);
+        showError(parent, "Error", message);
     }
 
     /**
-     * Shows a success/information message dialog.
+     * Shows an error message dialog with custom title.
+     * Demonstrates: Static Polymorphism (Method Overloading).
+     */
+    public static void showError(Component parent, String title, String message) {
+        JOptionPane.showMessageDialog(parent, message, title, JOptionPane.ERROR_MESSAGE);
+    }
+
+    /**
+     * Shows a success/information message dialog with default title.
+     * Demonstrates: Static Polymorphism (Method Overloading).
      */
     public static void showSuccess(Component parent, String message) {
-        JOptionPane.showMessageDialog(parent, message, "Success", JOptionPane.INFORMATION_MESSAGE);
+        showSuccess(parent, "Success", message);
     }
 
     /**
-     * Shows a warning message dialog.
+     * Shows a success/information message dialog with custom title.
+     * Demonstrates: Static Polymorphism (Method Overloading).
+     */
+    public static void showSuccess(Component parent, String title, String message) {
+        JOptionPane.showMessageDialog(parent, message, title, JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    /**
+     * Shows a warning message dialog with default title.
+     * Demonstrates: Static Polymorphism (Method Overloading).
      */
     public static void showWarning(Component parent, String message) {
-        JOptionPane.showMessageDialog(parent, message, "Warning", JOptionPane.WARNING_MESSAGE);
+        showWarning(parent, "Warning", message);
+    }
+
+    /**
+     * Shows a warning message dialog with custom title.
+     * Demonstrates: Static Polymorphism (Method Overloading).
+     */
+    public static void showWarning(Component parent, String title, String message) {
+        JOptionPane.showMessageDialog(parent, message, title, JOptionPane.WARNING_MESSAGE);
     }
 
     /**
@@ -52,18 +79,27 @@ public class DialogHelper {
     }
 
     /**
-     * Creates a styled JButton with consistent appearance.
+     * Creates a styled JButton with default size.
+     * Demonstrates: Static Polymorphism (Method Overloading).
      */
     public static JButton createStyledButton(String text, Color bgColor) {
-        JButton button = new JButton(text);
-        button.setFont(Constants.FONT_BUTTON);
-        button.setBackground(bgColor);
-        button.setForeground(Color.WHITE);
-        button.setFocusPainted(false);
-        button.setBorderPainted(false);
-        button.setOpaque(true);
-        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        button.setPreferredSize(new Dimension(130, 36));
+        return createStyledButton(text, bgColor, 130, 36);
+    }
+
+    /**
+     * Creates a styled JButton with custom dimensions.
+     * Demonstrates: Static Polymorphism (Method Overloading).
+     */
+    public static JButton createStyledButton(String text, Color bgColor, int width, int height) {
+         JButton button = new JButton(text);
+         button.setFont(Constants.FONT_BUTTON);
+         button.setBackground(bgColor);
+         button.setForeground(Color.WHITE);
+         button.setFocusPainted(false);
+         button.setBorderPainted(false);
+         button.setOpaque(true);
+         button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+         button.setPreferredSize(new Dimension(width, height));
 
         // Hover effect
         Color hoverColor = bgColor.brighter();
